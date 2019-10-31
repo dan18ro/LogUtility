@@ -13,7 +13,7 @@ variables:
   solution: 'LogUtility.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  libraryVersion:''
+  
 
 steps:
 - task: NuGetToolInstaller@1
@@ -21,11 +21,18 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-- task: AutoAppVersion@1
+- task: Assembly-Info-NetFramework@2
   inputs:
-    ProjectFile: 'LogUtility.csproj'
-    VersionVariable: '$(libraryVersion)'
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: |
+      **\AssemblyInfo.cs
+      **\AssemblyInfo.vb
+    InsertAttributes: true
+    FileEncoding: 'auto'
+    WriteBOM: false
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+    InformationalVersion: '$(Build.BuildNumber)'
 
 - task: VSBuild@1
   inputs:
