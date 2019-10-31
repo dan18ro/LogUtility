@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   version: '$(Build.BuildNumber)'
-  
+  majorVersion: ''
 
 steps:
 - task: NuGetToolInstaller@1
@@ -22,6 +22,10 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+- task: FileContenttoVariable@2
+  inputs:
+    FilePath: 'major_version.txt'
+    VariableName: 'majorVersion'
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
