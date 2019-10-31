@@ -13,7 +13,7 @@ variables:
   solution: 'LogUtility.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  version: '$(Build.BuildNumber)'
+  buildNumber: '$(Rev:r)'
   majorVersion: ''
 
 steps:
@@ -26,6 +26,7 @@ steps:
   inputs:
     FilePath: 'major_version.txt'
     VariableName: 'majorVersion'
+    AddNewlines: false
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
@@ -35,9 +36,9 @@ steps:
     InsertAttributes: true
     FileEncoding: 'auto'
     WriteBOM: false
-    VersionNumber: '$(version)'
-    FileVersionNumber: '$(version)'
-    InformationalVersion: '$(version)'
+    VersionNumber: '$(majorVersion).$(buildNumber)'
+    FileVersionNumber: '$(majorVersion).$(buildNumber)'
+    InformationalVersion: '$(majorVersion).$(buildNumber)'
 
 - task: VSBuild@1
   inputs:
