@@ -13,7 +13,7 @@ variables:
   solution: 'LogUtility.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  buildNumber: '$(Rev:r)'
+  buildNumber: $(Rev:r)
   majorVersion: ''
 
 steps:
