@@ -13,6 +13,7 @@ variables:
   solution: 'LogUtility.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  version: '$(Build.BuildNumber)'
   
 
 steps:
@@ -30,9 +31,9 @@ steps:
     InsertAttributes: true
     FileEncoding: 'auto'
     WriteBOM: false
-    VersionNumber: '$(Build.BuildNumber)'
-    FileVersionNumber: '$(Build.BuildNumber)'
-    InformationalVersion: '$(Build.BuildNumber)'
+    VersionNumber: '$(version)'
+    FileVersionNumber: '$(version)'
+    InformationalVersion: '$(version)'
 
 - task: VSBuild@1
   inputs:
