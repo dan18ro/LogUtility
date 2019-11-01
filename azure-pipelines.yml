@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   buildNumber: '$(Build.SourceVersion)'
   majorVersion: ''
-  fileVersion:'$(majorVersion).$(buildNumber)'
+  assemblyVersion:'$(majorVersion).$(buildNumber)'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -38,9 +38,9 @@ steps:
     InsertAttributes: true
     FileEncoding: 'auto'
     WriteBOM: false
-    VersionNumber: '$(fileVersion)'
-    FileVersionNumber: '$(fileVersion)'
-    InformationalVersion: '$(fileVersion)'
+    VersionNumber: '$(assemblyVersion)'
+    assemblyVersionNumber: '$(assemblyVersion)'
+    InformationalVersion: '$(assemblyVersion)'
 
 - task: VSBuild@1
   inputs:
@@ -58,7 +58,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: 'fileVersion'
+    versionEnvVar: 'assemblyVersion'
 
 - task: NuGetCommand@2
   inputs:
