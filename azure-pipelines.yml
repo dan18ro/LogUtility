@@ -41,10 +41,7 @@ steps:
     VersionNumber: '$(version)'
     FileVersionNumber: '$(version)'
     InformationalVersion: '$(version)'
-- task: AssembyInfoReader@2
-  inputs:
-    searchPattern: 'LogUtility\AssemblyInfo.cs'
-    variablesPrefix: 'Assembly'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -62,7 +59,6 @@ steps:
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
-
 
 - task: NuGetCommand@2
   inputs:
