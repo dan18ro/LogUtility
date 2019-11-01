@@ -47,7 +47,7 @@ steps:
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    configuration: '$(buildConfiguration)'    
 
 - task: VSTest@2
   inputs:
@@ -59,9 +59,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: 'version'
-    buildProperties: 
-
+    versionEnvVar: 'version'     
+    buildProperties: 'tags=''log4net;asynchronous;nologging;synchronous;systeminformation;wrapper;logging;utility'''
 
 - task: NuGetAuthenticate@0
 - task: NuGetToolInstaller@1
