@@ -65,6 +65,5 @@ steps:
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;'
-    publishVstsFeed: 'https://www.nuget.org'
-    feedsToUse: select
+    packDestination: 'https://www.nuget.org'
     includeNuGetOrg: true    
