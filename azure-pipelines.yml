@@ -14,8 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   buildNumber: '$(Build.SourceVersion)'
-  majorVersion: ''
-  assemblyVersion: '$(majorVersion).$(buildNumber)'
+  majorVersion: ''  
 
 steps:
 - task: NuGetToolInstaller@1
@@ -38,9 +37,9 @@ steps:
     InsertAttributes: true
     FileEncoding: 'auto'
     WriteBOM: false
-    VersionNumber: '$(assemblyVersion)'
-    assemblyVersionNumber: '$(assemblyVersion)'
-    InformationalVersion: '$(assemblyVersion)'
+    VersionNumber: '$(majorVersion).$(buildNumber)'
+    FileVersionNumber: '$(majorVersion).$(buildNumber)'
+    InformationalVersion: '$(majorVersion).$(buildNumber)'
 
 - task: VSBuild@1
   inputs:
