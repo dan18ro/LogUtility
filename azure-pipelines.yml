@@ -60,7 +60,9 @@ steps:
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
+    buildProperties: 
+
 
 - task: NuGetAuthenticate@0
 - task: NuGetToolInstaller@1
-- script: nuget push -ApiKey oy2bx5tkyc3ak3mm22qqtsgktdjjjihuvldhw45jct5fra -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/**/*.nupkg -n true
+- script: nuget push -ApiKey oy2bx5tkyc3ak3mm22qqtsgktdjjjihuvldhw45jct5fra -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/**/LogUtility.nupkg
