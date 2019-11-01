@@ -61,9 +61,6 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;'
-    packDestination: 'https://www.nuget.org'
-    includeNuGetOrg: true    
+- task: NuGetAuthenticate@0
+- task: NuGetToolInstaller@1
+- script: nuget push -ApiKey oy2bx5tkyc3ak3mm22qqtsgktdjjjihuvldhw45jct5fra -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/**/*.nupkg  
