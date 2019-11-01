@@ -67,4 +67,6 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     publishFeedCredentials: '8ea71714-2b0a-4002-8e05-400bf8bb1246'
     publishPackageMetadata: false
+    publishVstsFeed: 'nuget.org'
+    externalFeedCredentials: 'oy2miboa7erxkl6fjeiaftzguglfmjzutisf7pzlimbkfq'
     nuGetFeedType: 'external'
