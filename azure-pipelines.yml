@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   buildNumber: '$(Build.SourceVersion)'
   majorVersion: ''
-  version: '$(majorVersion).$(buildNumber)'
+  version: '$(majorVersion).$(Assembly.Release)'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -41,7 +41,10 @@ steps:
     VersionNumber: '$(majorVersion).$(buildNumber)'
     FileVersionNumber: '$(majorVersion).$(buildNumber)'
     InformationalVersion: '$(majorVersion).$(buildNumber)'
-
+- task: AssembyInfoReader@2
+  inputs:
+    searchPattern: 'LogUtility\AssemblyInfo.cs'
+    variablesPrefix: 'Assembly'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
