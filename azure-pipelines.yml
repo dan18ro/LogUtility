@@ -54,16 +54,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@2
+- task: NuGetCommand@2    
   inputs:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    publishFeedCredentials: 'oy2ikgnc5awz24ilzktadzyytzl4ahfuja5b6qtrgn4pkq'
+    publishFeedCredentials: '8ea71714-2b0a-4002-8e05-400bf8bb1246'
     publishPackageMetadata: false
     nuGetFeedType: 'external'
