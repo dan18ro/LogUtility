@@ -60,12 +60,10 @@ steps:
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
-
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '8ea71714-2b0a-4002-8e05-400bf8bb1246'
+    publishFeedCredentials: 'oy2ikgnc5awz24ilzktadzyytzl4ahfuja5b6qtrgn4pkq'
     publishPackageMetadata: false
-    allowPackageConflicts: true
+    nuGetFeedType: 'external'
