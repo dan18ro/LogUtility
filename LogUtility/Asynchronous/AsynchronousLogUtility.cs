@@ -12,7 +12,7 @@ namespace LogUtility.Asynchronous
     /// <summary>
     /// Provides the implementation for one asynchronous logging component.
     /// </summary>
-    public class AsynchronousLogUtility : LogUtil, ILogUtility
+    public class AsynchronousLogUtility : LogUtility, ILogUtility
     {
         private readonly BlockingCollection<Message> _queue = new BlockingCollection<Message>(new ConcurrentQueue<Message>());
         private readonly Thread _writer;

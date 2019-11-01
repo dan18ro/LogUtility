@@ -11,7 +11,7 @@ namespace LogUtility
     /// <summary>
     /// Provides the implementation of a synchronous logging.
     /// </summary>
-    public class LogUtil: ILogUtility
+    public class LogUtility: ILogUtility
     {
         private readonly ILogConfiguration _configuration;
         protected readonly IConsoleWriter ConsoleWriter;
@@ -27,7 +27,7 @@ namespace LogUtility
         /// </summary>
         /// <param name="logConfiguration">Log configuration object should be provided.</param>
         /// <param name="consoleAvailable">If console is available, and we want to log on console as well it should be set to true.</param>
-        public LogUtil(ILogConfiguration logConfiguration, bool consoleAvailable = false)           
+        public LogUtility(ILogConfiguration logConfiguration, bool consoleAvailable = false)           
         {
             _configuration = logConfiguration;
             ConsoleWriter = consoleAvailable ? (IConsoleWriter)(new ConsoleWritter(_configuration.LoggerLevel)): new NullConsoleWriter();
@@ -38,7 +38,7 @@ namespace LogUtility
         
         #endregion
 
-        #region ILogUtility
+        #region ILogUtilityity
 
         /// <inheritdoc />
         public void LogStartUpInformation()
@@ -88,7 +88,7 @@ namespace LogUtility
         public virtual void Error(string message, params object[] args)
         {
             var msg = GetMessage(message, args);
-            Logger.Logger.Log(typeof(LogUtil), log4net.Core.Level.Error, msg, null);
+            Logger.Logger.Log(typeof(LogUtility), log4net.Core.Level.Error, msg, null);
             ConsoleWriter.ConsoleWrite(msg, "ERROR");
         }
 
@@ -96,7 +96,7 @@ namespace LogUtility
         public virtual void Info(string message, params object[] args)
         {
             var msg = GetMessage(message, args);
-            Logger.Logger.Log(typeof(LogUtil), log4net.Core.Level.Info, msg, null);
+            Logger.Logger.Log(typeof(LogUtility), log4net.Core.Level.Info, msg, null);
             ConsoleWriter.ConsoleWrite(msg, "INFO");
         }
 
@@ -104,7 +104,7 @@ namespace LogUtility
         public virtual void Debug(string message, params object[] args)
         {
             var msg = GetMessage(message, args);
-            Logger.Logger.Log(typeof(LogUtil), log4net.Core.Level.Debug, msg, null);
+            Logger.Logger.Log(typeof(LogUtility), log4net.Core.Level.Debug, msg, null);
             ConsoleWriter.ConsoleWrite(msg, "DEBUG");
         }
 
@@ -112,7 +112,7 @@ namespace LogUtility
         public virtual void Fatal(string message, params object[] args)
         {
             var msg = GetMessage(message, args);
-            Logger.Logger.Log(typeof(LogUtil), log4net.Core.Level.Fatal, msg, null);
+            Logger.Logger.Log(typeof(LogUtility), log4net.Core.Level.Fatal, msg, null);
             ConsoleWriter.ConsoleWrite(msg, "FATAL");
         }
 
@@ -120,7 +120,7 @@ namespace LogUtility
         public virtual void Warning(string message, params object[] args)
         {
             var msg = GetMessage(message, args);
-            Logger.Logger.Log(typeof(LogUtil), log4net.Core.Level.Warn, msg, null);
+            Logger.Logger.Log(typeof(LogUtility), log4net.Core.Level.Warn, msg, null);
             ConsoleWriter.ConsoleWrite(msg, "WARN");
         }
 
