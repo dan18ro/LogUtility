@@ -52,13 +52,16 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
+- task: AssembyInfoReader@2
+  inputs:
+    searchPattern: '**\AssemblyInfo.cs'
+    variablesPrefix: 'AssemblyInfo'
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: 'assemblyVersion'
+    versionEnvVar: 'AssemblyInfo.AssemblyVersion'
 
 - task: NuGetCommand@2
   inputs:
