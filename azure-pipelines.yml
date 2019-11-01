@@ -27,6 +27,7 @@ steps:
     FilePath: 'major_version.txt'
     VariableName: 'majorVersion'
     AddNewlines: false
+
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
@@ -50,3 +51,19 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: '$(majorVersion).$(buildNumber)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '8ea71714-2b0a-4002-8e05-400bf8bb1246'
+    publishPackageMetadata: false
+    allowPackageConflicts: true
