@@ -8,6 +8,7 @@ trigger:
 
 pool:
   vmImage: 'windows-latest'
+name: $(Rev:r)
 
 variables:
   solution: 'LogUtility.sln'
@@ -15,7 +16,7 @@ variables:
   buildConfiguration: 'Release'
   buildNumber: '$(Build.BuildNumber)'
   majorVersion: ''
-  version: '$(majorVersion).$(Rev:.r)'
+  version: '$(majorVersion).$(buildNumber)'
 
 steps:
 - task: NuGetToolInstaller@1
