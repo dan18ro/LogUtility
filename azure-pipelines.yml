@@ -13,9 +13,9 @@ variables:
   solution: 'LogUtility.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  buildNumber: '$(Build.SourceVersion)'
+  buildNumber: '$(Build.BuildNumber)'
   majorVersion: ''
-  version: '$(majorVersion).$(Assembly.Release)'
+  version: '$(majorVersion).$(buildNumber)'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -38,13 +38,10 @@ steps:
     InsertAttributes: true
     FileEncoding: 'auto'
     WriteBOM: false
-    VersionNumber: '$(majorVersion).$(buildNumber)'
-    FileVersionNumber: '$(majorVersion).$(buildNumber)'
-    InformationalVersion: '$(majorVersion).$(buildNumber)'
-- task: AssembyInfoReader@2
-  inputs:
-    searchPattern: 'LogUtility\AssemblyInfo.cs'
-    variablesPrefix: 'Assembly'
+    VersionNumber: '$(version)'
+    FileVersionNumber: '$(version)'
+    InformationalVersion: '$(version)'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -62,7 +59,6 @@ steps:
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
-
 
 - task: NuGetCommand@2
   inputs:
