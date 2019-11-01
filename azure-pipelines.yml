@@ -14,7 +14,8 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   buildNumber: '$(Build.SourceVersion)'
-  majorVersion: ''  
+  majorVersion: ''
+  version: '$(majorVersion).$(buildNumber)'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -51,16 +52,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: AssembyInfoReader@2
-  inputs:
-    searchPattern: '**\AssemblyInfo.cs'
-    variablesPrefix: 'AssemblyInfo'
+
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: 'AssemblyInfo.AssemblyVersion'
+    versionEnvVar: 'version'
+
 
 - task: NuGetCommand@2
   inputs:
