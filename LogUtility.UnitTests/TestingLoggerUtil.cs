@@ -20,7 +20,8 @@ namespace LogUtility.UnitTests
             var config = new LogConfiguration(
                 Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "App.config"),
                 "LogUtil1");
-            _synchronousLog = new LogUtil(config, true);
+            _synchronousLog = new LogUtility(config, true);
+            
             _asynchronousLog = new AsynchronousLogUtility(config, true);
         }
 

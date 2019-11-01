@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LogUtility")]
 [assembly: AssemblyDescription("This component is a wrapper around log4net.dll. It offers the possibility for synchronous and asynchronous logging.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Daniel Rosca")]
 [assembly: AssemblyProduct("LogUtility")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
