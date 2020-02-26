@@ -57,7 +57,7 @@ steps:
 - task: NuGetCommand@2    
   inputs:
     command: 'pack'
-    packagesToPack: '**/**/LogUtility.sln'
+    packagesToPack: '**/LogUtility.csproj;**/LogUtility.UnitTests.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'     
     buildProperties: 'tags=''log4net;asynchronous;nologging;synchronous;systeminformation;wrapper;logging;utility'''
