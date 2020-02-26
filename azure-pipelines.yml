@@ -57,7 +57,7 @@ steps:
 - task: NuGetCommand@2    
   inputs:
     command: 'pack'
-    packagesToPack: '**/LogUtility.csproj'
+    packagesToPack: '**/LogUtility.csproj;**/LogUtility.UnitTests.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'     
     buildProperties: 'tags=''log4net;asynchronous;nologging;synchronous;systeminformation;wrapper;logging;utility'''
@@ -65,4 +65,4 @@ steps:
 - task: NuGetAuthenticate@0
 - task: NuGetToolInstaller@1
 - script: dir $(Build.ArtifactStagingDirectory)
-- script: nuget push -ApiKey oy2bx5tkyc3ak3mm22qqtsgktdjjjihuvldhw45jct5fra -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/LogUtility.$(version).nupkg
+- script: nuget push -ApiKey oy2pbhhg3chyqgrgjhpqqzffcxga5pfuxg3hohrn3aayhm -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/LogUtility.$(version).nupkg
