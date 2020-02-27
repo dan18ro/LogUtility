@@ -6,7 +6,7 @@
     <authors>Daniel Rosca</authors>
     <owners>Daniel Rosca</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-	<repository type="git" url="https://github.com/dan18ro/LogUtility.git/>
+	<repository type="git" url="https://github.com/dan18ro/LogUtility.git"/>
     <description>This component is a wrapper around log4net.dll. It offers the possibility for synchronous and asynchronous logging.</description>
     <dependencies>
       <dependency id="log4net" version="2.0.8" />
