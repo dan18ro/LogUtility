@@ -3,6 +3,7 @@
   <metadata>
     <id>LogUtility</id>
     <title>LogUtility</title>
+	<version>$version$</version>
     <authors>Daniel Rosca</authors>
     <owners>Daniel Rosca</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
