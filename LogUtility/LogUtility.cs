@@ -2,9 +2,8 @@
 
 using log4net;
 
-using LoggerUtil.Console;
-
 using LogUtility.Configuration;
+using LogUtility.Console;
 
 namespace LogUtility
 {
@@ -30,7 +29,7 @@ namespace LogUtility
         public LogUtility(ILogConfiguration logConfiguration, bool consoleAvailable = false)           
         {
             _configuration = logConfiguration;
-            ConsoleWriter = consoleAvailable ? (IConsoleWriter)(new ConsoleWritter(_configuration.LoggerLevel)): new NullConsoleWriter();
+            ConsoleWriter = consoleAvailable ? (IConsoleWriter)(new ConsoleWriter(_configuration.LoggerLevel)): new NullConsoleWriter();
             CreateLogger();
             LoggerStartupInformation = new SystemInformation(this);
         }
@@ -60,30 +59,7 @@ namespace LogUtility
             LoggerStartupInformation.Line();
             EndStartupInformationLog();
         }
-
-        public virtual void BeginStartupInformationLog()
-        {
-            _currentLayout = LogManager.GetRepository().GetAppenders().OfType<log4net.Appender.RollingFileAppender>().First().Layout;
-
-            var appenders = LogManager.GetRepository().GetAppenders();
-            foreach (var rollingFileAppender in appenders.OfType<log4net.Appender.RollingFileAppender>())
-            {
-                var layout = new log4net.Layout.PatternLayout("%message%newline");
-                rollingFileAppender.Layout = layout;
-                layout.ActivateOptions();
-            }
-        }
-
-        public virtual void EndStartupInformationLog()
-        {
-            var appenders = LogManager.GetRepository().GetAppenders();
-            foreach (var rollingFileAppender in appenders.OfType<log4net.Appender.RollingFileAppender>())
-            {
-                rollingFileAppender.Layout = _currentLayout;
-            }
-            _currentLayout = null;
-        }
-
+        
         /// <inheritdoc />
         public virtual void Error(string message, params object[] args)
         {
@@ -125,6 +101,29 @@ namespace LogUtility
         }
 
         #endregion
+        
+        protected void BeginStartupInformationLog()
+        {
+            _currentLayout = LogManager.GetRepository().GetAppenders().OfType<log4net.Appender.RollingFileAppender>().First().Layout;
+
+            var appenders = LogManager.GetRepository().GetAppenders();
+            foreach (var rollingFileAppender in appenders.OfType<log4net.Appender.RollingFileAppender>())
+            {
+                var layout = new log4net.Layout.PatternLayout("%message%newline");
+                rollingFileAppender.Layout = layout;
+                layout.ActivateOptions();
+            }
+        }
+
+        protected void EndStartupInformationLog()
+        {
+            var appenders = LogManager.GetRepository().GetAppenders();
+            foreach (var rollingFileAppender in appenders.OfType<log4net.Appender.RollingFileAppender>())
+            {
+                rollingFileAppender.Layout = _currentLayout;
+            }
+            _currentLayout = null;
+        }
 
         private string GetMessage(string message, object[] args)
         {

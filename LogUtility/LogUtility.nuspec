@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LogUtility</id>
+    <title>LogUtility</title>
+    <authors>Daniel Rosca</authors>
+    <owners>Daniel Rosca</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<repository type="git" url="https://github.com/dan18ro/LogUtility.git/>
+    <description>This component is a wrapper around log4net.dll. It offers the possibility for synchronous and asynchronous logging.</description>
+    <dependencies>
+      <dependency id="log4net" version="2.0.8" />
+    </dependencies>
+  </metadata>
+</package>

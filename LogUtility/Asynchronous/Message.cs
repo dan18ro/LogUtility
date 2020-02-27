@@ -2,7 +2,7 @@
 
 namespace LogUtility.Asynchronous
 {
-    internal class Message
+    internal sealed class Message
     {
         public string MessageText { get; set; }
         public object[] Args { get; set; }

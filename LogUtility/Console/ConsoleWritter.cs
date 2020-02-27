@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
 
-namespace LoggerUtil.Console
+namespace LogUtility.Console
 {
-    public class ConsoleWritter : IConsoleWriter
+    public class ConsoleWriter : IConsoleWriter
     {
         private log4net.Core.Level _loggerLevel;
         
-        public ConsoleWritter(log4net.Core.Level level)
+        public ConsoleWriter(log4net.Core.Level level)
         {
             this._loggerLevel = level;
         }

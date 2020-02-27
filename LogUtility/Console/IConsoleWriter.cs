@@ -1,4 +1,4 @@
-﻿namespace LoggerUtil.Console
+﻿namespace LogUtility.Console
 {
     public interface IConsoleWriter
     {

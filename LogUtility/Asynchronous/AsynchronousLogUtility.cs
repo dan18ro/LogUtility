@@ -2,9 +2,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
-
-using LoggerUtil;
-
 using LogUtility.Configuration;
 
 namespace LogUtility.Asynchronous
@@ -15,25 +12,25 @@ namespace LogUtility.Asynchronous
     public class AsynchronousLogUtility : LogUtility, ILogUtility
     {
         private readonly BlockingCollection<Message> _queue = new BlockingCollection<Message>(new ConcurrentQueue<Message>());
-        private readonly Thread _writer;
+
         private volatile bool _shouldStop;
 
         /// <summary>
         /// Instantiates an asynchronous logging object.
         /// </summary>
-        /// <param name="logConfiguration">Log configuration objec should be provided.</param>
+        /// <param name="logConfiguration">Log configuration object should be provided.</param>
         /// <param name="consoleAvailable">If console is available, and we want to log on console as well it should be set to true.</param>
         public AsynchronousLogUtility(ILogConfiguration logConfiguration, bool consoleAvailable = false)
             : base(logConfiguration, consoleAvailable)
         {
             BeginStartupInformationLog();
-            _writer = new Thread(WriteMessageToFile);
-            _writer.Start();
-
+            var writer = new Thread(WriteMessageToFile);
+            writer.Start();
         }
 
 
         #region Public Methods
+
         public override void Error(string message, params object[] args)
         {
             var frame = new StackFrame(1);
@@ -41,7 +38,6 @@ namespace LogUtility.Asynchronous
 
             AddToQueue(message, args, MessageType.Error, method.ReflectedType.Name + ":" + method.Name);
         }
-
 
         public override void Info(string message, params object[] args)
         {
@@ -70,7 +66,6 @@ namespace LogUtility.Asynchronous
             var method = frame.GetMethod();
             AddToQueue(message, args, MessageType.Warning, method.ReflectedType.Name + ":" + method.Name);
         }
-
 
         public override void StopLogging()
         {
@@ -109,7 +104,6 @@ namespace LogUtility.Asynchronous
 
         private void WriteMessageToFile()
         {
-
             while (!_shouldStop)
             {
                 try
@@ -118,7 +112,6 @@ namespace LogUtility.Asynchronous
                 }
                 catch
                 {
-
                 }
             }
         }
