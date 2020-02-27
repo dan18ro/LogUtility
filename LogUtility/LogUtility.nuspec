@@ -9,6 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<repository type="git" url="https://github.com/dan18ro/LogUtility.git"/>
     <description>This component is a wrapper around log4net.dll. It offers the possibility for synchronous and asynchronous logging.</description>
+	<tags>log4net asynchronous nologging synchronous systeminformation wrapper logging utility</tags>
     <dependencies>
       <dependency id="log4net" version="2.0.8" />
     </dependencies>
