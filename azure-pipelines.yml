@@ -59,7 +59,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '''**/LogUtility.csproj;**/LogUtility.UnitTests.csproj'''
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'version'     
     includeSymbols: true
 - task: NuGetCommand@2    
   inputs:
