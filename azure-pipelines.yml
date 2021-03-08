@@ -59,6 +59,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/LogUtility.csproj'
+    searchPatternPack: $(Parameters.RestoreBuildProjects)
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'     
     buildProperties: 'tags=''log4net;asynchronous;nologging;synchronous;systeminformation;wrapper;logging;utility'''
