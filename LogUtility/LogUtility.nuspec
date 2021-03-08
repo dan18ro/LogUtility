@@ -11,7 +11,7 @@
     <description>This component is a wrapper around log4net.dll. It offers the possibility for synchronous and asynchronous logging.</description>
 	<tags>log4net asynchronous nologging synchronous systeminformation wrapper logging utility</tags>
     <dependencies>
-      <dependency id="log4net" version="2.0.8" />
+      <dependency id="log4net" version="2.0.12" />
     </dependencies>
   </metadata>
 </package>
