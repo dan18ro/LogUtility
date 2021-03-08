@@ -20,7 +20,7 @@ variables:
 
     
 steps:
--task: FileContenttoVariable@2
+- task: FileContenttoVariable@2
   inputs:
     FilePath: 'major_version.txt'
     VariableName: 'majorVersion'
