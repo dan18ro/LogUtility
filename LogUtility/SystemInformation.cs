@@ -304,7 +304,7 @@ namespace LogUtility
             }
 
             var stringBuilder = new StringBuilder();
-            var registryKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
+            var registryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion");
             if (registryKey == null)
             {
                 return "Unknown Windows";
