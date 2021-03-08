@@ -18,14 +18,13 @@ variables:
   majorVersion: ''
   version: '$(majorVersion).$(buildNumber)'
 
-
-- task: FileContenttoVariable@2
+    
+steps:
+-task: FileContenttoVariable@2
   inputs:
     FilePath: 'major_version.txt'
     VariableName: 'majorVersion'
     AddNewlines: false
-    
-steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
