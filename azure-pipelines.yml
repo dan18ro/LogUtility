@@ -25,6 +25,7 @@ steps:
     FilePath: 'major_version.txt'
     VariableName: 'majorVersion'
     AddNewlines: false
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
