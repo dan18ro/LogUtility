@@ -55,7 +55,12 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '''**/LogUtility.csproj;**/LogUtility.UnitTests.csproj'''
+    versioningScheme: 'byBuildNumber'
+    includeSymbols: true
 - task: NuGetCommand@2    
   inputs:
     command: 'pack'
