@@ -12,6 +12,7 @@
 	<tags>log4net asynchronous nologging synchronous systeminformation wrapper logging utility</tags>
     <dependencies>
       <dependency id="log4net" version="2.0.12" />
+	  <dependency id="Microsoft.Win32.Registry" version="5.0.0" />
     </dependencies>
   </metadata>
 </package>
