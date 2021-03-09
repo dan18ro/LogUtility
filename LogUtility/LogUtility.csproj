@@ -23,7 +23,7 @@
     <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.1|AnyCPU'">
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Release\Logutility\bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Asynchronous\AsynchronousLogUtility.cs" />
