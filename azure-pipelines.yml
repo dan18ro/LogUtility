@@ -66,4 +66,4 @@ steps:
 - task: NuGetAuthenticate@0
 - task: NuGetToolInstaller@1
 - script: dir $(Build.ArtifactStagingDirectory)
-- script: nuget push -ApiKey oy2pbhhg3chyqgrgjhpqqzffcxga5pfuxg3hohrn3aayhm -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/LogUtility.$(version).nupkg
+- script: nuget push -ApiKey oy2l22fbtdurtqcedhmavqdl7wyihm4udohiiz434y6goi -Source https://api.nuget.org/v3/index.json $(Build.ArtifactStagingDirectory)/LogUtility.$(version).nupkg
