@@ -28,10 +28,6 @@ steps:
 
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
@@ -44,24 +40,20 @@ steps:
     VersionNumber: '$(version)'
     FileVersionNumber: '$(version)'
     InformationalVersion: '$(version)'
-
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
+    msbuildArchitecture: 'x64'
     platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'    
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:pack /p:IncludeSymbols=true'
+    clean: true
+    restoreNugetPackages: true
 
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/LogUtility.nuspec'    
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'version'     
-    buildProperties: 'tags=''log4net;asynchronous;nologging;synchronous;systeminformation;wrapper;logging;utility'''
 
 - task: NuGetAuthenticate@0
 - task: NuGetToolInstaller@1
